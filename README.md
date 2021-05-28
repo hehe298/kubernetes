@@ -176,10 +176,12 @@ spec:
 ## Nếu có lỗi `The connection to the server localhost:8080 was refused - did you specify the right host or port?`
 
 ### có thể tham khảo sửa lỗi bằng việc run command:
-`curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-BASH`
-`mkdir -p $HOME/.kube`
-`sudo cp -i /etc/kubernetes/admin.conf HOME/.kube/config sudo chown (id -u):$(id -g) $HOME/.kube/config`
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+BASH
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf HOME/.kube/config sudo chown (id -u):$(id -g) $HOME/.kube/config
+```
 
 ![192303146_342221654082614_7925044578669865513_n](https://user-images.githubusercontent.com/84090649/120004376-de79f680-c000-11eb-9d2b-b021cfda8df6.gif)
 
