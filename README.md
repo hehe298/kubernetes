@@ -60,7 +60,8 @@ bắt đầu 1 cluster sử dụng docker drive
 ### 4) Triển khai MariaDb và Wordpress
 
 #### Nội dung file mariadb_PV.yaml
-``---
+```
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -72,11 +73,13 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data" ``
+    path: "/mnt/data" 
+  ```
 
 #### Next, viết file mariadb_PVC.yaml
 
-``---
+```
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -160,7 +163,8 @@ spec:
       volumes:
       - name: mariadb-volume
         persistentVolumeClaim:
-          claimName: wordpress-mariadb-volume``
+          claimName: wordpress-mariadb-volume
+  ```
 
 #### Deploy mariadb:
 
@@ -184,7 +188,8 @@ và bắt đầu deploy lại
 
 ### Tạo service Wordpress
 viết deploy wordpress.yaml
-``apiVersion: v1
+```
+apiVersion: v1
 kind: Service
 metadata:
   name: wordpress
@@ -256,7 +261,8 @@ spec:
       volumes:
       - name: wordpress-storage
         persistentVolumeClaim:
-          claimName: wordpress-volume``
+          claimName: wordpress-volume
+```
    #### để chạy service, hãy run       
 ` kubectl apply -f wordpress.yaml
 
