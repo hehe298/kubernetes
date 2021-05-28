@@ -1,7 +1,8 @@
 # setup kubernetes
 ### 1) Cập nhật apt và thực hiện các cài đặt sau:
-`sudo apt-get install curl apt-transport-https docker.io
-    sudo apt install virtualbox virtualbox-ext-pack`
+`sudo apt-get install curl apt-transport-https docker.io`
+
+    `sudo apt install virtualbox virtualbox-ext-pack`
  ### 2) cài đặt kubectl
  
  
@@ -23,26 +24,34 @@ Kiểm tra version của kubectl sau khi cài đặt thành công
 #### cài đặt packgae minikube
 `wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`
 #### sử dụng minikube ở terminal
-`sudo mv minikube-linux-amd64 /usr/local/bin/minikube
-sudo chmod 755 /usr/local/bin/minikube`
+`sudo mv minikube-linux-amd64 /usr/local/bin/minikube`
+
+`sudo chmod 755 /usr/local/bin/minikube`
+
  Kiểm tra version của minikube khi đã cài đặt thành công
+ 
 `minikube version`
+
 #### thực hiện bắt đầu 1 cluster
+
 `minikube start --driver=docker`
 
 ### 4) Cấu hình sử dụng minikube
 
  Thêm tài khoản trên ubuntu
-`sudo adduser minikube
-sudo passwd minikub` 
+`sudo adduser minikube`
+
+`sudo passwd minikub` 
 
 Sau đó nhập và xác thực mật khẩu cho tài khoản minikube
 
 #### Thêm tài khoản vừa tạo vào group sudo và docker
-`sudo usermod -aG sudo minikube
-sudo usermod -aG docker minikube
-newgrp docker`
+`sudo usermod -aG sudo minikube`
+`sudo usermod -aG docker minikube`
+`newgrp docker`
+
 bắt đầu 1 cluster sử dụng docker drive
+
 `minikube start --driver=docker`
 
 
@@ -81,7 +90,7 @@ spec:
       storage: 2Gi``
 
  #### viết file mariadb.yaml
----
+``---
 apiVersion: v1
 kind: Service
 metadata:
@@ -151,14 +160,14 @@ spec:
       volumes:
       - name: mariadb-volume
         persistentVolumeClaim:
-          claimName: wordpress-mariadb-volume
+          claimName: wordpress-mariadb-volume``
 
 #### Deploy mariadb:
 
 ##### run các lệnh: 
-``kubectl apply -f mariadb_PV.yaml
-kubectl apply -f mariadb_PVC.yaml
-kubectl apply -f deploy-mariadb.yaml``
+``kubectl apply -f mariadb_PV.yaml`
+`kubectl apply -f mariadb_PVC.yaml
+`kubectl apply -f deploy-mariadb.yaml``
 
 ## Nếu có lỗi `The connection to the server localhost:8080 was refused - did you specify the right host or port?`
 
@@ -175,7 +184,7 @@ và bắt đầu deploy lại
 
 ### Tạo service Wordpress
 viết deploy wordpress.yaml
-`apiVersion: v1
+``apiVersion: v1
 kind: Service
 metadata:
   name: wordpress
@@ -247,7 +256,7 @@ spec:
       volumes:
       - name: wordpress-storage
         persistentVolumeClaim:
-          claimName: wordpress-volume`
+          claimName: wordpress-volume``
    #### để chạy service, hãy run       
 ` kubectl apply -f wordpress.yaml
 
